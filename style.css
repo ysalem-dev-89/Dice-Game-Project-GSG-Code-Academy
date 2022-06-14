@@ -1,0 +1,204 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Spline Sans Mono", monospace;
+  font-family: "Ubuntu Mono", monospace;
+  font-family: "Blinker", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: linear-gradient(45deg, #9d80cb, #f7c2e6);
+}
+
+main {
+  position: relative;
+  width: 80rem;
+  height: 50rem;
+  max-height: 100%;
+  max-width: 100%;
+  display: flex;
+  gap: 20rem;
+}
+
+.player {
+  position: relative;
+  flex: 50%;
+  padding: 8rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 4px solid #cb7a7a;
+  border-radius: 1rem;
+}
+
+.player-active {
+  border: 4px solid #d62525;
+  background-color: #9863ec;
+}
+
+.player-winner {
+  transform: rotate(-2deg);
+  animation: changeColor 1s ease-in-out infinite;
+}
+
+@keyframes changeColor {
+  50% {
+    border-color: red;
+    transform: rotate(2deg);
+  }
+}
+
+.player.player-active::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: url(images/dice-icon.png);
+  background-size: 200px 200px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -250px;
+}
+
+.player.player-2.player-active::before {
+  left: initial;
+  right: -250px;
+}
+
+.player-winner::after {
+  content: "winner!";
+  text-transform: uppercase;
+  font-size: 2.2rem;
+  color: #d62525;
+  position: absolute;
+  top: 4rem;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+  padding: 1rem;
+  z-index: 1;
+  opacity: 0.2;
+  animation: fade 1s ease-in-out infinite;
+}
+
+@keyframes fade {
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.player .title {
+  font-size: 2.8rem;
+  margin-bottom: 4rem;
+  font-weight: 600;
+}
+
+.player-active .title {
+  font-weight: 900;
+}
+
+.player .score {
+  font-size: 6rem;
+  margin-bottom: auto;
+}
+
+.player .current {
+  padding: 1.5rem;
+  background-color: #e2189f;
+  color: #fff;
+  border-radius: 1rem;
+  width: 85%;
+}
+
+.player .current .current-label {
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.player .current .current-score {
+  font-size: 2.8rem;
+}
+
+.game-control {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  height: calc(100% - 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  border: none;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 3rem;
+  height: 4rem;
+  font-size: 1.6rem;
+  font-family: inherit;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.15rem;
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.btn:not([disabled]):hover,
+.btn.hover {
+  background: linear-gradient(45deg, #652bc4, #ec51bb);
+  color: #fff;
+}
+
+.dice-image {
+  margin-top: 4rem;
+  margin-bottom: auto;
+}
+
+.final-score {
+  border: none;
+  width: 12rem;
+  height: 4rem;
+  border-radius: 0.4rem;
+  padding: 1rem 1rem 1rem 1.5rem;
+  font-family: inherit;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.final-score::placeholder {
+  font-size: 1.2rem;
+}
+
+.final-score:focus {
+  outline: none;
+}
+
+.default {
+  font-size: 1.2rem;
+  margin-top: 0.8rem;
+}
+
+label {
+  margin-top: 0.4rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.hidden {
+  visibility: hidden;
+}
