@@ -202,3 +202,36 @@ label {
 .hidden {
   visibility: hidden;
 }
+
+@media (max-width: 768px) {
+  html {
+    font-size: 50%;
+  }
+  body {
+    padding: 0.5rem 1rem;
+  }
+  main {
+    flex-direction: column;
+    gap: 4rem;
+    height: 100%;
+    width: 100%;
+  }
+  .player {
+    width: 70%;
+    padding: 4rem;
+    height: 50%;
+  }
+  .game-control {
+    right: -40px;
+    left: initial;
+    width: 25%;
+  }
+
+  .btn {
+    height: fit-content;
+  }
+
+  .player.player-active::before {
+    display: none;
+  }
+}
